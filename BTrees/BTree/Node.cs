@@ -3,20 +3,20 @@
     using System;
     using System.Collections.Generic;
 
-    public class Node<TK, TP>
+    public class Node<TK>
     {
         private readonly int _degree;
 
         public Node(int degree)
         {
             _degree = degree;
-            Children = new List<Node<TK, TP>>(degree);
-            Entries = new List<Entry<TK, TP>>(degree);
+            Children = new List<Node<TK>>(degree);
+            Entries = new List<Entry<TK>>(degree);
         }
 
-        public List<Node<TK, TP>> Children { get; set; }
+        public List<Node<TK>> Children { get; set; }
 
-        public List<Entry<TK, TP>> Entries { get; set; }
+        public List<Entry<TK>> Entries { get; set; }
 
         public bool IsLeaf
         {

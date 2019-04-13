@@ -2,15 +2,13 @@
 {
     using System;
 
-    public class Entry<TK, TP> : IEquatable<Entry<TK, TP>>
+    public class Entry<TK> : IEquatable<Entry<TK>>
     {
         public TK Key { get; set; }
 
-        public TP Pointer { get; set; }
-
-        public bool Equals(Entry<TK, TP> other)
+        public bool Equals(Entry<TK> other)
         {
-            return Key.Equals(other.Key) && Pointer.Equals(other.Pointer);
+            return Key.Equals(other.Key);
         }
     }
 }
