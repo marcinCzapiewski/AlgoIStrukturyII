@@ -7,7 +7,7 @@ namespace BTreesDemo
     {
         static void Main(string[] args)
         {
-            var bTree = new BTree<int, object>(5);
+            var bTree = new BTree<int, object>(3);
 
             bTree.Insert(1, null);
             bTree.Insert(2, null);
@@ -26,12 +26,13 @@ namespace BTreesDemo
             bTree.Insert(15, null);
             bTree.Insert(16, null);
             bTree.Insert(17, null);
-            bTree.Insert(18, null);
+
+            bTree.Traverse();
+            Console.WriteLine();
+
+            bTree.Print();
 
 
-            for
-
-            Console.WriteLine("Hello World!");
         }
     }
 }

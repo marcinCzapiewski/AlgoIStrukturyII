@@ -1,6 +1,7 @@
 ﻿namespace BTree
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
 
@@ -276,6 +277,42 @@
             }
 
             InsertNonFull(node.Children[positionToInsert], newKey, newPointer);
+        }
+
+        public void Traverse()
+        {
+            if (Root != null) Root.Traverse();
+        }
+
+        public void Print()
+        {
+            var thisLevel = new List<Node<TK, TP>>
+            {
+                Root
+            };
+
+            while (thisLevel != null && thisLevel.Any())
+            {
+                var nextLevel = new List<Node<TK, TP>>();
+                var output = "";
+
+                foreach (var node in thisLevel)
+                {
+                    if (node.Children.Any())
+                    {
+                        nextLevel.AddRange(node.Children);
+                    }
+
+                    foreach (var entry in node.Entries)
+                    {
+                        output += entry.Key + " ";
+                    }
+                }
+
+                Console.WriteLine(output);
+
+                thisLevel = nextLevel;
+            }
         }
     }
 }

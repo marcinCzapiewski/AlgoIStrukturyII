@@ -1,5 +1,6 @@
 ﻿namespace BTree
 {
+    using System;
     using System.Collections.Generic;
 
     public class Node<TK, TP>
@@ -38,6 +39,25 @@
             get
             {
                 return Entries.Count == _degree - 1;
+            }
+        }
+
+        public void Traverse()
+        {
+            int i;
+            for (i = 0; i < Entries.Count; i++)
+            {
+                if (!IsLeaf)
+                {
+                    Children[i].Traverse();
+                }
+
+                Console.Write(" " + Entries[i].Key);
+            }
+
+            if (!IsLeaf)
+            {
+                Children[i].Traverse();
             }
         }
     }
