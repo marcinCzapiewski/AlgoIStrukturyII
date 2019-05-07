@@ -1,4 +1,7 @@
-﻿namespace DisjointSets
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace DisjointSets
 {
     static class DisjointSets
     {
@@ -13,7 +16,8 @@
         {
             if (x != x.Parent)
             {
-                x.Parent = FindSet(x.Parent);
+                var tmp = FindSet(x.Parent);
+                x.Parent = tmp;
             }
 
             return x.Parent;
@@ -30,7 +34,7 @@
                 x.Parent = y;
                 if (x.Rank == y.Rank)
                 {
-                    y.Rank += 1;
+                    y.Rank++;
                 }
             }
         }
