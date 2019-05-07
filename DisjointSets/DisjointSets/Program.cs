@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using static DisjointSets.DisjointSets;
 
 namespace DisjointSets
 {
@@ -6,14 +9,25 @@ namespace DisjointSets
     {
         static void Main(string[] args)
         {
-            int vertices = 6;
-            var graph = new Graph(vertices);
-            graph.AddEgde(0, 1);
-            graph.AddEgde(0, 2);
-            graph.AddEgde(1, 3);
-            graph.AddEgde(4, 5);
-            Console.WriteLine("Disjoint Sets: ");
-            graph.DisjointSets();
+            var sets = new List<Node>();
+            for (int i = 1; i < 10; i++)
+            {
+                sets.Add(MakeSet(i));
+            }
+
+            Union(FindSet(sets[0]), FindSet(sets[1]));
+            Union(FindSet(sets[2]), FindSet(sets[3]));
+            Union(FindSet(sets[4]), FindSet(sets[3]));
+            Union(FindSet(sets[0]), FindSet(sets[4]));
+            Union(FindSet(sets[5]), FindSet(sets[6]));
+            Union(FindSet(sets[7]), FindSet(sets[8]));
+            Union(FindSet(sets[5]), FindSet(sets[7]));
+            Union(FindSet(sets[6]), FindSet(sets[3]));
+
+            foreach(var node in sets.OrderByDescending(x => x.Rank))
+            {
+                Console.Write($"{node.Key} ");
+            }
         }
     }
 }
